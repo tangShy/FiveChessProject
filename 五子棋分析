@@ -1,0 +1,100 @@
+【开发前的知识准备】
+知识点
+1.swing编程
+2.ImageIO 类的使用
+3.图片的绘制
+
+JFrame是创建窗体的swing类，用来创建一个图形界面的原始窗口，设置其大小、位置等属性，是swing编程的基础类之一。
+JFrame——主要方法:
+	1.setVisible();		设置窗体是否显示——true：显示，false:不显示
+	2.setTitle();		设置窗体标题
+	3.setSize();		设置窗体大小
+	4.setLocation();	设置窗体初始显示位置
+	5.setResizable();	设置窗体是否可以改变大小——true：可以，false:不可以
+	6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);设置窗体关闭方式，关闭窗体时同时结束程序
+	
+	取得屏幕的大小
+	1.Toolkit.getDefaultToolkit().getScreenSize().width
+	2.Toolkit.getDefaultToolkit().getScreenSize().height
+
+JOptionPane——主要方法：
+	1.showMessageDialog();	显示一个提示信息
+	2.showConfirmDialog();	显示一个确认对话框
+	3.showInputDialog();	显示一个信息输入对话框，作用是用来保存用户输入的信息	
+
+MouseListener——主要方法：
+	MouseListener 的使用方法，需要调用JFrame的addMouseListener方法加入监听。
+	1.mouseCliked(MouseEvent e);	监听鼠标点击事件的操作
+	2.mouseEntered(MouseEvent e);	监听鼠标进入事件的操作
+	3.mouseExited(MouseEvent e);	监听鼠标离开事件的操作
+	4.mousePressed(MouseEvent e);	监听鼠标按下事件的操作
+	5.mouseReleased(MouseEvent e);	监听鼠标抬起事件的操作
+	
+	鼠标点击时执行的顺序是：
+	mousePressed --> mouseReleased --> mouseClicked	(按下与抬起在同一位置才会执行，否则不执行)
+
+MouseEvent——
+	getX();		得到鼠标的横向位置坐标
+	getY();		得到鼠标的纵向位置坐标
+	
+Graphics——类似画笔，用来在窗口中绘制文字和图像
+		——通过覆写JFrame的paint()方法来使用，通过repaint()方法来调用
+	常用方法:
+	1.drawString(); 	绘制字符串 
+	2.drawOval();		绘制一个空心的圆形
+	3.fillOval();		绘制一个实心的圆形
+	4.drawLine();		绘制一条直线
+	5.drawRect();		绘制一个空心的矩形
+	6.fillRect();		绘制一个实心的矩形
+	7.drawImage();		绘制一个已经存在的图片，将图片显示窗体中
+	其他方法
+	8.setColor();		设置画笔颜色
+	9.setFont();		设置字体大小
+	
+【游戏功能】
+1.点击鼠标时，可以在相应的位置显示棋子。
+2.可以自动判断游戏是否结束，是否黑方或白方是否胜利。
+3.对游戏时间进行设置，判断是否超出规定时间。
+=========================================
+	1.首先，开发出游戏界面:
+	计算棋盘每一条线的间距，这里用的是19*19的围棋棋盘
+	总宽度为360像素，分成18份，每份是20像素
+	总高度同上
+	
+	2.在棋盘上的鼠标点击位置，显示一颗棋子
+	黑子：一个实心的黑圆来表示
+	白子：一个空心的黑圆 + 一个实心的白圆 来表示
+	
+	repaint()方法：表示重新执行一次paint()方法
+	
+	3.保存之前下过的棋子
+	通过一个二维数组来保存之前下过的所有棋子。
+	
+	4.判断游戏胜负（核心）
+	依据五子棋的游戏规则，判断相连的同颜色棋子是否有五个
+	完成了 五子棋的核心算法，这里可以把核心算法总结成一个灵活的方法。
+	提示信息的保存
+	
+	5.处理屏幕闪烁问题
+	     双缓冲技术：用在手机游戏中用的是最多的，原因是手机的内存相对较小，屏幕闪烁问题比较明显。
+	
+	6.实现各个按钮的功能
+	开始游戏：重新开始游戏，清空棋盘所有棋子
+	游戏设置：设计倒计时
+	游戏说明：用来说明游戏规则和操作
+	认输：       表示某一方放弃游戏
+	关于：       用来显示程序的作者或者编写单位的相关信息
+	退出：       结束游戏
+	
+		
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	

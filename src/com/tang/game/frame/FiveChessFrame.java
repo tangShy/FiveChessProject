@@ -69,7 +69,7 @@ public class FiveChessFrame extends JFrame implements MouseListener,Runnable {
 		
 		String imagePath = "" ;
 		try {
-			imagePath = System.getProperty("user.dir")+"/bin/image/background.jpg" ;
+			imagePath = System.getProperty("user.dir")+"/background.jpg" ;
 			bgImage = ImageIO.read(new File(imagePath.replaceAll("\\\\", "/")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
